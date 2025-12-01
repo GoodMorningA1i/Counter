@@ -36,6 +36,13 @@ struct ContentView: View {
                 .foregroundStyle(.black)
                 .font(.system(size: 100))
         })
+        Button("Reset") {
+            reset()
+        }
+    }
+    
+    func reset() {
+        count = 0
     }
 }
 
