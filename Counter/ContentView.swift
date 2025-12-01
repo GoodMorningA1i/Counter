@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingResetConfirmation = false
     @State private var count: Int {
         didSet {
             if let encoded = try? JSONEncoder().encode(count) {
@@ -40,7 +41,13 @@ struct ContentView: View {
             .sensoryFeedback(.increase, trigger: count)
             .toolbar {
                 Button("Reset") {
-                    reset()
+                    showingResetConfirmation.toggle()
+                }
+                .confirmationDialog("Counter Reset", isPresented: $showingResetConfirmation) {
+                    Button("Yes") { reset() }
+                    Button("No", role: .cancel) { }
+                } message: {
+                    Text("Are you sure you want to reset your counter?")
                 }
             }
         }
