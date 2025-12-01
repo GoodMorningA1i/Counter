@@ -8,7 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var count = 0
+    @State private var count: Int {
+        didSet {
+            if let encoded = try? JSONEncoder().encode(count) {
+                UserDefaults.standard.set(encoded, forKey: "Count")
+            }
+        }
+    }
+    
+    init() {
+        if let savedItem = UserDefaults.standard.data(forKey: "Count") {
+            if let decodedItem = try? JSONDecoder().decode(Int.self, from: savedItem) {
+                count = decodedItem
+                return
+            }
+        }
+        
+        count = 0
+    }
     
     var body: some View {
         Button(action: {
