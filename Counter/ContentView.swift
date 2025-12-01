@@ -36,6 +36,8 @@ struct ContentView: View {
                 .foregroundStyle(.black)
                 .font(.system(size: 100))
         })
+        .sensoryFeedback(.increase, trigger: count)
+        
         Button("Reset") {
             reset()
         }
