@@ -28,18 +28,21 @@ struct ContentView: View {
     }
     
     var body: some View {
-        Button(action: {
-            count += 1
-        }, label: {
-            Text("\(count)")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .foregroundStyle(.black)
-                .font(.system(size: 100))
-        })
-        .sensoryFeedback(.increase, trigger: count)
-        
-        Button("Reset") {
-            reset()
+        NavigationStack {
+            Button(action: {
+                count += 1
+            }, label: {
+                Text("\(count)")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundStyle(.black)
+                    .font(.system(size: 100))
+            })
+            .sensoryFeedback(.increase, trigger: count)
+            .toolbar {
+                Button("Reset") {
+                    reset()
+                }
+            }
         }
     }
     
