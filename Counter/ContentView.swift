@@ -45,7 +45,7 @@ struct ContentView: View {
                 }
                 .confirmationDialog("Counter Reset", isPresented: $showingResetConfirmation) {
                     Button("Yes") { reset() }
-                    Button("No", role: .cancel) { }
+                    Button("No") { }
                 } message: {
                     Text("Are you sure you want to reset your counter?")
                 }
