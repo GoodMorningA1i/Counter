@@ -35,7 +35,7 @@ struct ContentView: View {
             }, label: {
                 Text("\(count)")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .foregroundStyle(.black)
+                    .foregroundColor(.primary)
                     .font(.system(size: 100))
             })
             .sensoryFeedback(.increase, trigger: count)
