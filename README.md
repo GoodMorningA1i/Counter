@@ -2,7 +2,7 @@
 
 <img width="859" height="592" alt="Screenshot 2025-12-23 at 4 41 01 PM" src="https://github.com/user-attachments/assets/777c070c-9f9c-4d46-a475-82ed83c79cdf" />
 
-# Download the app here
+## Download the App Here
 
 https://apps.apple.com/ca/app/counter-simple-tally-app/id6756017935
 
