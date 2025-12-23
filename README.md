@@ -17,7 +17,7 @@ A simple tally app that, well, counts 🤯
 - Reset the counter to 0
 - Vibration on every tap
 
-### Built With
+## Built With
 
 Xcode, Swift, SwiftUI
 
