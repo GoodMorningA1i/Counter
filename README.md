@@ -12,10 +12,11 @@ A simple tally app that, well, counts 🤯
 
 ## Features
 
-- Increments counter by 1 on tap
-- Saves progress, so you can leave the app and come back to it starting where you left off
+- Increment counter by 1, you can tap anywhere on the screen
+- Decrement counter by 1, tap on the "-" sign
 - Reset the counter to 0
 - Vibration on every tap
+- Saves progress, so you can leave the app and come back to it starting where you left off
 
 ## Built With
 
