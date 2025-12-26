@@ -31,7 +31,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Button(action: {
-                count += 1
+                increment()
             }, label: {
                 Text("\(count)")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -40,17 +40,42 @@ struct ContentView: View {
             })
             .sensoryFeedback(.increase, trigger: count)
             .toolbar {
-                Button("Reset") {
-                    showingResetConfirmation.toggle()
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    Button {
+                        increment()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    Button {
+                        decrement()
+                    } label: {
+                        Image(systemName: "minus")
+                    }
                 }
-                .confirmationDialog("Counter Reset", isPresented: $showingResetConfirmation) {
-                    Button("Yes") { reset() }
-                    Button("No") { }
-                } message: {
-                    Text("Are you sure you want to reset your counter?")
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Reset") {
+                        showingResetConfirmation.toggle()
+                    }
+                    .confirmationDialog("Counter Reset", isPresented: $showingResetConfirmation) {
+                        Button("Yes") { reset() }
+                        Button("No") { }
+                    } message: {
+                        Text("Are you sure you want to reset your counter?")
+                    }
+                    .sensoryFeedback(.warning, trigger: showingResetConfirmation)
                 }
-                .sensoryFeedback(.warning, trigger: showingResetConfirmation)
             }
+        }
+    }
+    
+    func increment() {
+        count += 1
+    }
+    
+    func decrement() {
+        if count > 0 {
+            count -= 1
         }
     }
     
