@@ -63,7 +63,6 @@ struct ContentView: View {
                     } message: {
                         Text("Are you sure you want to reset your counter?")
                     }
-                    .sensoryFeedback(.warning, trigger: showingResetConfirmation)
                 }
             }
         }
