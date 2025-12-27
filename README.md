@@ -47,8 +47,16 @@ You should replace `your_username` and `project_name` respectively.
 
 ## Acknowledgements
 
+## Taro
+
 While this is my own project, it would have taken me MUCH longer to get here without the amazing AMAZING side project courses provided at Taro. Thank you!! 
 
 Here are the courses:
 - [Build Side Projects With 500k+ Users: Coming Up With An Idea](https://www.jointaro.com/course/build-side-projects-with-500k-users-coming-up-with-an-idea/)
 - [Build Side Projects With 500k+ Users: Shipping & Growing](https://www.jointaro.com/course/build-side-projects-with-500k-users-shipping-and-growing/)
+
+## Sound effects
+
+Thank you Pixabay for the sound effects. Special thanks to creators:
+- u_u4pf5h7zip (https://pixabay.com/sound-effects/click-345983/)
+- JustSomeSounds (https://pixabay.com/sound-effects/click-sound-432501/)
