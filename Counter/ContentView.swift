@@ -5,9 +5,11 @@
 //  Created by Ali Syed on 2025-12-01.
 //
 
+import AVFAudio
 import SwiftUI
 
 struct ContentView: View {
+    @State private var audioPlayer: AVAudioPlayer!
     @State private var showingResetConfirmation = false
     @State private var count: Int {
         didSet {
@@ -69,17 +71,52 @@ struct ContentView: View {
     }
     
     func increment() {
-        count += 1
+        incrementCounter()
+        produceCounterSoundEffect(for: CounterType.increment.rawValue)
     }
     
     func decrement() {
-        if count > 0 {
-            count -= 1
+        if decrementCounterIfPossible() {
+            produceCounterSoundEffect(for: CounterType.decrement.rawValue)
         }
     }
     
     func reset() {
         count = 0
+    }
+    
+    private func incrementCounter() {
+        count += 1
+    }
+    
+    @discardableResult
+    private func decrementCounterIfPossible() -> Bool {
+        if count > 0 {
+            count -= 1
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func produceCounterSoundEffect(for soundName: String) {
+        guard let soundFile = NSDataAsset(name: soundName) else {
+            print("Couldn't not read the file name \(soundName)")
+            return
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(data: soundFile.data)
+            audioPlayer.play()
+        } catch {
+            // couldn't load file :(
+            print("ERROR: \(error.localizedDescription) creating audio player")
+        }
+    }
+    
+    private enum CounterType: String {
+        case increment
+        case decrement
     }
 }
 
