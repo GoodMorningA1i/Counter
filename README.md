@@ -16,6 +16,7 @@ A simple tally app that, well, counts 🤯
 - Decrement counter by 1, tap on the "-" sign
 - Reset the counter to 0
 - Vibration on every tap
+- Different sound effects for counter increments and decrements
 - Saves progress, so you can leave the app and come back to it starting where you left off
 
 ## Built With
