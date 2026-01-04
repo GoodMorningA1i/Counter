@@ -63,7 +63,7 @@ struct ContentView: View {
                         Button("Yes") { reset() }
                         Button("No") { }
                     } message: {
-                        Text("Are you sure you want to reset your counter?")
+                        Text("Do you want to reset your counter to 0?")
                     }
                 }
             }
@@ -76,9 +76,8 @@ struct ContentView: View {
     }
     
     func decrement() {
-        if decrementCounterIfPossible() {
-            produceCounterSoundEffect(for: CounterType.decrement.rawValue)
-        }
+        decrementCounter()
+        produceCounterSoundEffect(for: CounterType.decrement.rawValue)
     }
     
     func reset() {
@@ -89,14 +88,8 @@ struct ContentView: View {
         count += 1
     }
     
-    @discardableResult
-    private func decrementCounterIfPossible() -> Bool {
-        if count > 0 {
-            count -= 1
-            return true
-        } else {
-            return false
-        }
+    private func decrementCounter() {
+        count -= 1
     }
     
     private func produceCounterSoundEffect(for soundName: String) {
