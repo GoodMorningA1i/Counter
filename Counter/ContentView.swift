@@ -32,14 +32,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            Button(action: {
+            Button {
                 increment()
-            }, label: {
+            } label: {
                 Text("\(count)")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundColor(.primary)
                     .font(.system(size: 100))
-            })
+            }
             .sensoryFeedback(.increase, trigger: count)
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
