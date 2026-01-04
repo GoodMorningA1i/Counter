@@ -21,7 +21,7 @@ A simple tally app that, well, counts 🤯
 
 ## Built With
 
-Xcode, Swift, SwiftUI
+Xcode, Swift, SwiftUI, AVFoundation
 
 ## Getting Started
 
