@@ -42,12 +42,7 @@ struct ContentView: View {
             }
             .sensoryFeedback(.increase, trigger: count)
             .toolbar {
-                ToolbarItemGroup(placement: .topBarLeading) {
-                    Button {
-                        increment()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+                ToolbarItem(placement: .topBarLeading) {
                     Button {
                         decrement()
                     } label: {
@@ -56,8 +51,10 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Reset") {
+                    Button {
                         showingResetConfirmation.toggle()
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
                     }
                     .confirmationDialog("Counter Reset", isPresented: $showingResetConfirmation) {
                         Button("Yes") { reset() }
