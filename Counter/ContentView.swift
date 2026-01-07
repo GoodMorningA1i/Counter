@@ -50,13 +50,13 @@ struct ContentView: View {
                         }
                         .onDisappear {
                             isEditing = false
+                            isTextFieldFocused = false
                         }
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
                                 Button("Done") {
                                     commitEditing()
-                                    isTextFieldFocused = false
                                 }
                             }
                         }
@@ -143,6 +143,7 @@ struct ContentView: View {
             }
         }
         isEditing = false
+        isTextFieldFocused = false
     }
     
     private enum CounterType: String {
