@@ -18,6 +18,9 @@ struct ContentView: View {
             }
         }
     }
+    @State private var isEditing = false
+    @State private var editingValue = ""
+    @FocusState private var isTextFieldFocused: Bool
     
     init() {
         if let savedItem = UserDefaults.standard.data(forKey: "Count") {
@@ -35,10 +38,39 @@ struct ContentView: View {
             Button {
                 increment()
             } label: {
-                Text("\(count)")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .foregroundColor(.primary)
-                    .font(.system(size: 100))
+                if isEditing {
+                    TextField("", text: $editingValue)
+                        .keyboardType(.numberPad)
+                        .font(.system(size: 100))
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .focused($isTextFieldFocused)
+                        .onSubmit {
+                            commitEditing()
+                        }
+                        .onDisappear {
+                            isEditing = false
+                        }
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    commitEditing()
+                                    isTextFieldFocused = false
+                                }
+                            }
+                        }
+                } else {
+                    Text("\(count)")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .foregroundColor(.primary)
+                        .font(.system(size: 100))
+                        .onLongPressGesture {
+                            editingValue = ""
+                            isEditing = true
+                            isTextFieldFocused = true
+                        }
+                }
             }
             .sensoryFeedback(.increase, trigger: count)
             .toolbar {
@@ -102,6 +134,15 @@ struct ContentView: View {
             // couldn't load file :(
             print("ERROR: \(error.localizedDescription) creating audio player")
         }
+    }
+    
+    private func commitEditing() {
+        if let newValue = Int(editingValue) {
+            if newValue < 900000 {
+                count = newValue
+            }
+        }
+        isEditing = false
     }
     
     private enum CounterType: String {
