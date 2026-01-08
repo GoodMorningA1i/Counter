@@ -18,6 +18,7 @@ A simple tally app that, well, counts 🤯
 - Vibration on every tap
 - Different sound effects for counter increments and decrements
 - Saves progress, so you can leave the app and come back to it starting where you left off
+- Landscape mode
 
 ## Built With
 
