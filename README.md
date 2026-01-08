@@ -10,15 +10,21 @@ https://apps.apple.com/ca/app/counter-simple-tally-app/id6756017935
 
 A simple tally app that, well, counts 🤯
 
+Tap anywhere on the screen! Increment your counter with maximum flexibility.
+Touch and hold the counter to edit it and start counting from your number of choice.
+
+A counter for iPhone and iPad.
+
 ## Features
 
 - Increment counter by 1, you can tap anywhere on the screen
 - Decrement counter by 1, tap on the "-" sign
 - Reset the counter to 0
 - Vibration on every tap
+- Landscape mode
 - Different sound effects for counter increments and decrements
 - Saves progress, so you can leave the app and come back to it starting where you left off
-- Landscape mode
+- Edit counter to start at a specified number of your choice
 
 ## Built With
 
