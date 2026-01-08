@@ -10,7 +10,7 @@ https://apps.apple.com/ca/app/counter-simple-tally-app/id6756017935
 
 A simple tally app that, well, counts 🤯
 
-Tap anywhere on the screen! Increment your counter with maximum flexibility.
+Tap anywhere on the screen! Increment your counter with maximum flexibility.\
 Touch and hold the counter to edit it and start counting from your number of choice.
 
 A counter for iPhone and iPad.
