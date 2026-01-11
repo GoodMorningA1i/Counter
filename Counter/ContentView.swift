@@ -35,15 +35,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            Button {
-                increment()
-            } label: {
+            VStack {
                 if isEditing {
                     TextField("", text: $editingValue)
                         .keyboardType(.numberPad)
                         .font(.system(size: 100))
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .multilineTextAlignment(.center)
                         .focused($isTextFieldFocused)
                         .onSubmit {
                             commitEditing()
@@ -63,8 +62,15 @@ struct ContentView: View {
                 } else {
                     Text("\(count)")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .contentShape(Rectangle())
                         .foregroundColor(.primary)
                         .font(.system(size: 100))
+                        .onTapGesture {
+                            increment()
+                        }
+                        .contentTransition(.numericText())
+                        .animation(.default, value: count)
+                        .sensoryFeedback(.increase, trigger: count)
                         .onLongPressGesture {
                             editingValue = ""
                             isEditing = true
@@ -72,7 +78,6 @@ struct ContentView: View {
                         }
                 }
             }
-            .sensoryFeedback(.increase, trigger: count)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
