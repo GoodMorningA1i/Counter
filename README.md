@@ -1,6 +1,7 @@
 # Counter
 
-<img width="836" height="584" alt="Screenshot 2025-12-26 at 6 33 10 PM" src="https://github.com/user-attachments/assets/12afb3c7-9a3a-40dd-9bb0-9c2a62158a60" />
+<img width="1138" height="587" alt="Screenshot 2026-01-12 at 7 06 44 AM" src="https://github.com/user-attachments/assets/78debb6b-5ba4-453f-9def-749d38f1f210" />
+
 
 ## Download the App Here
 
