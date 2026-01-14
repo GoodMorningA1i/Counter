@@ -20,6 +20,7 @@ struct ContentView: View {
     }
     @State private var isEditing = false
     @State private var editingValue = ""
+    @State private var textFaded = false
     @FocusState private var isTextFieldFocused: Bool
     
     init() {
@@ -65,8 +66,13 @@ struct ContentView: View {
                         .contentShape(Rectangle())
                         .foregroundColor(.primary)
                         .font(.system(size: 100))
+                        .opacity(textFaded ? 0.2 : 1)
                         .onTapGesture {
+                            textFaded = true
                             increment()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                textFaded = false
+                            }
                         }
                         .contentTransition(.numericText())
                         .animation(.default, value: count)
@@ -81,7 +87,11 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
+                        textFaded = true
                         decrement()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            textFaded = false
+                        }
                     } label: {
                         Image(systemName: "minus")
                     }
