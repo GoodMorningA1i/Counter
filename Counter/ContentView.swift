@@ -6,6 +6,7 @@
 //
 
 import AVFAudio
+import Combine
 import SwiftUI
 
 struct ContentView: View {
@@ -20,6 +21,9 @@ struct ContentView: View {
     }
     @State private var isEditing = false
     @State private var editingValue = ""
+    @State private var isPressing = false
+    @State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State private var isScaledDown = false
     @State private var textFaded = false
     @FocusState private var isTextFieldFocused: Bool
     
@@ -65,14 +69,10 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .contentShape(Rectangle())
                         .foregroundColor(.primary)
-                        .font(.system(size: 100))
+                        .font(.system(size: isScaledDown ? 60 : 100))
                         .opacity(textFaded ? 0.2 : 1)
                         .onTapGesture {
-                            textFaded = true
                             increment()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                textFaded = false
-                            }
                         }
                         .contentTransition(.numericText())
                         .animation(.default, value: count)
@@ -81,17 +81,31 @@ struct ContentView: View {
                             editingValue = ""
                             isEditing = true
                             isTextFieldFocused = true
+                        } onPressingChanged: { isPressing in
+                            self.isPressing = isPressing
+                            
+                            if !isPressing {
+                                timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+                                withAnimation(.easeOut) {
+                                    isScaledDown = false
+                                    textFaded = false
+                                }
+                            }
+                        }
+                        .onReceive(timer) { timer in
+                            if isPressing {
+                                withAnimation(.easeIn) {
+                                    isScaledDown = true
+                                    textFaded = true
+                                }
+                            }
                         }
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        textFaded = true
                         decrement()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            textFaded = false
-                        }
                     } label: {
                         Image(systemName: "minus")
                     }
