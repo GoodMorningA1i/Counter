@@ -7,6 +7,10 @@
 
 https://apps.apple.com/ca/app/counter-simple-tally-app/id6756017935
 
+You can follow my journey with this app, whether that be new features or bug fixes, via X: https://x.com/A1iSyed
+
+If you have any ideas or feedback, please send them to alisyed0206@gmail.com
+
 ## About the Project
 
 A simple tally app that, well, counts 🤯
