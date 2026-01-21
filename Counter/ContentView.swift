@@ -69,7 +69,7 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .contentShape(Rectangle())
                         .foregroundColor(.primary)
-                        .font(.system(size: isScaledDown ? 60 : 100))
+                        .font(.system(size: isScaledDown ? 80 : 140))
                         .opacity(textFaded ? 0.2 : 1)
                         .onTapGesture {
                             increment()
@@ -167,7 +167,7 @@ struct ContentView: View {
     
     private func commitEditing() {
         if let newValue = Int(editingValue) {
-            if newValue < 900000 {
+            if newValue < 9000 {
                 count = newValue
             }
         }
