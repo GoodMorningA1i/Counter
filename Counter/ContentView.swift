@@ -113,14 +113,6 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        decrement()
-                    } label: {
-                        Image(systemName: "minus")
-                    }
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
                         showingResetConfirmation.toggle()
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
