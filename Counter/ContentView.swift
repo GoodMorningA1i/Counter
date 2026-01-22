@@ -74,6 +74,14 @@ struct ContentView: View {
                         .onTapGesture {
                             increment()
                         }
+                        .gesture(
+                            DragGesture()
+                                .onEnded { value in
+                                    if value.translation.width < 50 || value.translation.width > 50 {
+                                        decrement()
+                                    }
+                                }
+                        )
                         .contentTransition(.numericText())
                         .animation(.default, value: count)
                         .sensoryFeedback(.increase, trigger: count)
